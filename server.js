@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
 // ⚠️ DEIN DISCORD WEBHOOK (prüfen!)
-const DISCORD_WEBHOOK_URL = "HIER_DEIN_WEBHOOK";
+const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1455578740301234400/8zbvuRK141KzYGmjcA5OHsfAX_PqAlx-kX0M2MkSlR5n5jzEdybC_Aj2AyLqMb8dzNnj";
 
 // 🏠 Startseite
 app.get("/", (req, res) => {
