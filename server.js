@@ -1,36 +1,43 @@
 const express = require("express");
-const fetch = require("node-fetch").default || require("node-fetch");
-
+const path = require("path");
 
 const app = express();
+
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname)));
 
-// ❗ HIER SPÄTER DEIN DISCORD WEBHOOK
-const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1455578740301234400/8zbvuRK141KzYGmjcA5OHsfAX_PqAlx-kX0M2MkSlR5n5jzEdybC_Aj2AyLqMb8dzNnj";
+// ⚠️ DEIN DISCORD WEBHOOK (prüfen!)
+const DISCORD_WEBHOOK_URL = "HIER_DEIN_WEBHOOK";
 
+// 🏠 Startseite
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+// 📍 Standort empfangen
 app.post("/location", async (req, res) => {
-console.log("LOCATION ERHALTEN:", req.body);
+  try {
+    const { lat, lon } = req.body;
+    console.log("LOCATION ERHALTEN:", lat, lon);
 
-  const { lat, lon } = req.body;
+    const mapsLink = `https://maps.google.com/?q=${lat},${lon}`;
 
-  const mapsLink = `https://maps.google.com/?q=${lat},${lon}`;
+    await fetch(DISCORD_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        content: `📍 Standort erhalten\nLat: ${lat}\nLon: ${lon}\n🗺️ ${mapsLink}`
+      })
+    });
 
-  const message = {
-    content: `🚨 Kind gefunden\n📍 ${lat}, ${lon}\n🗺 ${mapsLink}`
-  };
-
-  await fetch(DISCORD_WEBHOOK_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(message)
-  });
-
-  res.sendStatus(200);
+    res.sendStatus(200);
+  } catch (err) {
+    console.error("FEHLER:", err);
+    res.sendStatus(500);
+  }
 });
 
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
   console.log("Server läuft auf Port " + PORT);
 });
