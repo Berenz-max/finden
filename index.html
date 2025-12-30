@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTP-Cookie</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: serif;
+      background: #ffffff;
+      color: #202122;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
+
+    h1 {
+      font-size: 28px;
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 6px;
+      font-weight: normal;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-top: 30px;
+      border-bottom: 1px solid #c8ccd1;
+      padding-bottom: 4px;
+      font-weight: normal;
+    }
+
+    p {
+      font-size: 15px;
+      margin: 14px 0;
+    }
+
+    .box {
+      background: #f8f9fa;
+      border: 1px solid #a2a9b1;
+      padding: 14px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 8px 14px;
+      font-size: 14px;
+      cursor: pointer;
+      background: #ffffff;
+      border: 1px solid #a2a9b1;
+    }
+
+    .status {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .legal {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #54595d;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>HTTP-Cookie</h1>
+
+    <p>
+      Ein <strong>Cookie</strong> ist eine kleine Textinformation, die im Browser gespeichert wird.
+      Diese Seite verwendet ein Cookie, um die Zustimmung des Nutzers zu speichern.
+    </p>
+
+    <div class="box">
+      <strong>Cookies erlauben</strong>
+      <p>
+        Durch das Erlauben von Cookies wird der aktuelle Standort abgefragt
+        und an den Server übermittelt.
+      </p>
+
+      <button onclick="allowCookies()">Cookies erlauben</button>
+
+      <div class="status" id="status"></div>
+    </div>
+
+    <h2>Rechtliche Hinweise</h2>
+
+    <div class="legal">
+      <p>
+        Diese Webseite verwendet ausschließlich technisch notwendige Cookies.
+        Das Cookie dient lediglich dazu, die Zustimmung des Nutzers zu speichern
+        und enthält keine personenbezogenen Daten.
+      </p>
+
+      <p>
+        Die Standortübermittlung erfolgt ausschließlich nach ausdrücklicher Zustimmung
+        des Nutzers über die Standortfreigabe des Browsers. Die Standortdaten werden
+        nur einmalig übertragen und nicht dauerhaft gespeichert.
+      </p>
+
+      <p>
+        Der Zugriff auf Standortdaten ist eine Funktion des verwendeten Browsers
+        und unterliegt dessen Sicherheits- und Datenschutzeinstellungen.
+      </p>
+
+      <p>
+        Fun-Fact: Der Begriff „Cookie“ stammt aus der Programmierung und beschreibt
+        kleine Dateninformationen, die Webseiten helfen, korrekt zu funktionieren.
+      </p>
+    </div>
+  </div>
+
+  <!-- EXTERNES SCRIPT -->
+  <script src="cookies.js"></script>
+
+</body>
+</html>
